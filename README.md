@@ -1,4 +1,4 @@
-![LOGO](https://github.com/DeepWave-Kaust/Project-Template/blob/main/asset/logo.png)
+![LOGO](asset/workflow.jpg)
 
 Reproducible material for **Seismic data interpolation using implicit neural
 representations with Fourier–hash features**.
