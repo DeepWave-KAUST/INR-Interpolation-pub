@@ -1,0 +1,29 @@
+# Conda environment for INR-Interpolation (DW0122).
+#
+# Verified on NVIDIA RTX 6000 Ada (sm_89); the same recipe also covers the
+# reviewers' GPUs, since tiny-cuda-nn is compiled for sm_75 (RTX 8000),
+# sm_80 (A100), sm_86 and sm_89 (Ada).
+#
+# IMPORTANT: run `./install_env.sh` instead of `conda env create` on its own.
+# Two dependencies are compiled from source and cannot be resolved by
+# `conda env create` alone (they must be built with --no-build-isolation):
+#   * pyseistr     - its setup.py imports NumPy at build time
+#   * tiny-cuda-nn - no PyPI wheel; built against the env's nvcc 11.8
+# install_env.sh creates this base env and then builds those two.
+name: inr_interp
+channels:
+  - nvidia/label/cuda-11.8.0
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.9
+  - pip
+  - setuptools<81          # keep pkg_resources, which tiny-cuda-nn's setup.py imports
+  - cuda-toolkit=11.8.0    # nvcc + CUDA dev libs used to compile tiny-cuda-nn
+  - pip:
+    - --extra-index-url https://download.pytorch.org/whl/cu118
+    - torch==2.0.1+cu118
+    - numpy<2              # torch 2.0.1 / tiny-cuda-nn need the NumPy 1.x ABI
+    - matplotlib
+    - tqdm
+    - ninja               # required to build the tiny-cuda-nn CUDA extension
