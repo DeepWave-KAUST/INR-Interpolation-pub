@@ -34,7 +34,7 @@ volumes, and the ablation configurations of Table 2 are **not** included here.
 ## Project structure
 
 * :open_file_folder: **scripts**: training entry points, the model and the shared configuration;
-* :open_file_folder: **data**: the input arrays used by the two scripts;
+* :open_file_folder: **data**: the input arrays of the 2D example (the 3D volume is not distributed, see below);
 * :open_file_folder: **outputs**: generated checkpoints, figures and reconstructed arrays (git-ignored);
 * :open_file_folder: **package**: placeholder for reusable library code;
 * :open_file_folder: **asset**: logo.
@@ -112,7 +112,11 @@ with `reconstruct_XXXX.npy` saved every 50 epochs. The result quoted in the pape
 
 Required input file in `data/`:
 
-- `image3dz_400x100x200.npy`
+- `image3dz_400x100x200.npy` — a 400 × 100 × 200 volume
+
+This volume is **not included in the repository** because the data are not publicly
+available. To run the 3D example on your own data, place a NumPy array of the same layout
+at `data/image3dz_400x100x200.npy`.
 
 Run:
 

@@ -27,3 +27,6 @@ outputs/*
 # Development #
 .ipynb_checkpoints/
 
+
+# Not publicly distributable #
+data/image3dz_400x100x200.npy
