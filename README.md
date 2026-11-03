@@ -1,4 +1,6 @@
-![LOGO](asset/workflow.jpg)
+![Workflow](asset/workflow.jpg)
+
+*Workflow of the proposed method: fixed Fourier features and learnable multi-level hash features of the normalized coordinates are concatenated and fed to an INR backbone, which is trained by the data misfit on the known traces.*
 
 Reproducible material for **Seismic data interpolation using implicit neural
 representations with Fourier–hash features**.
